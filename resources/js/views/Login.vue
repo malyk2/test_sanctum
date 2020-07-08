@@ -45,9 +45,10 @@ export default {
           password: "secret"
         };
         axios
-          .post("/login", data)
+          .post("/api/login", data)
           .then(response => {
             console.log("Then in LOGIN");
+            this.getUser();
           })
           .catch(error => {
             console.log("Catch in LOGIN");
@@ -56,7 +57,7 @@ export default {
     },
     logout() {
       axios
-        .post("/logout")
+        .post("/api/logout")
         .then(response => {
           console.log("Then in LOGOUT");
           this.user = {}
