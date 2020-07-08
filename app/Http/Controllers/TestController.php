@@ -8,10 +8,12 @@ class TestController extends Controller
 {
     public function login()
     {
-        // $test = auth()->attempt(['email' => 'test@gmail.com', 'password' => 'secret']);
-        // dd($test);
-        $user = auth()->guard('sanctum')->user();
-        dd('user', $user);
-        dd('in login');
+        $attempt = auth()->attempt(['email' => 'test@gmail.com', 'password' => 'secret']);
+        return response()->json($attempt);
+    }
+
+    public function logout()
+    {
+        return response()->json(auth()->logout());
     }
 }
